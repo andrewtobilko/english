@@ -31,7 +31,9 @@ dependencies {
             'org.springframework.boot:spring-boot-starter-web',
             'org.springframework.boot:spring-boot-starter-webflux',
             'org.springframework.boot:spring-boot-starter-websocket',
-            'io.jsonwebtoken:jjwt:0.7.0'
+            'io.jsonwebtoken:jjwt:0.7.0',
+
+            'org.modelmapper:modelmapper:1.1.0'
 
     runtime 'org.springframework.boot:spring-boot-devtools',
             'com.h2database:h2'

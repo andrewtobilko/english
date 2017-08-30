@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import SearchBar from './components/search-bar'
-import SearchResults from './components/search-results'
+import SearchResults from './containers/search-results'
 
 class App extends Component {
 
