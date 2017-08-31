@@ -1,19 +1,11 @@
-import React, {Component} from "react";
+import React from "react";
 
-import SearchBar from './search-bar';
-import SearchResults from '../containers/search-results.container';
+import SearchBar from '../containers/search-bar.container';
 
-class App extends Component {
+const Application = () => (
+    <div>
+        <SearchBar/>
+    </div>
+);
 
-    render() {
-        return (
-            <div>
-                <SearchBar/>
-                <SearchResults/>
-            </div>
-        );
-    }
-
-}
-
-export default App;
+export default Application;
