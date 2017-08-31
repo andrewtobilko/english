@@ -1,26 +1,34 @@
 import React, {Component} from 'react';
-import SearchResult from "../components/search-result";
 import {connect} from 'react-redux';
 
-import {resultSelect} from '../actions/index'
-import {bindActionCreators} from 'redux';
+import ResultDetails from './result-details.container'
 
 class SearchResults extends Component {
 
     renderResults() {
-        return this.props.results.map(result =>
-            <div onClick={this.props.selectedResult(result)}>
-                <SearchResult
-                    key={result.id}
-                    value={result.value}
-                />
-            </div>
+        const results = this.props.results;
+
+        if (!results) {
+            return <div>There is no results. Type something into the search bar.</div>
+        }
+
+        console.log(results);
+
+        return results.map(result => {
+                console.log('result = ', result);
+                return (
+                    <ResultDetails key={result.id}/>
+                );
+            }
         );
     }
 
     render() {
         return (
-            <div>{this.renderResults()}</div>
+            <div>
+                <h1>Search results:</h1>
+                <div>{this.renderResults()}</div>
+            </div>
         );
     }
 
@@ -32,10 +40,4 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        selectedResult: resultSelect
-    }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults)
+export default connect(mapStateToProps)(SearchResults)

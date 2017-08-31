@@ -1,14 +1,11 @@
-import * as _ from "lodash";
-
-// state argument is not the entire application state
-// it is only the state the reducer is responsible for
+import _ from "lodash";
 
 export default function (currentState = null, action) {
+    console.log('active-result.reducer.js', currentState, action);
 
     if (_.eq(action.type, 'RESULT_SELECTED')) {
         return action.payload
     }
 
     return currentState;
-
 }
