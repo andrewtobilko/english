@@ -1,0 +1,318 @@
+{
+  "status": 200,
+  "offset": 0,
+  "limit": 10,
+  "count": 10,
+  "total": 12,
+  "url": "/v2/dictionaries/entries?headword=hello",
+  "results": [
+    {
+      "datasets": [
+        "leasd",
+        "dictionary"
+      ],
+      "headword": "hello",
+      "id": "cqAFqf4aax",
+      "part_of_speech": "interj",
+      "senses": [
+        {
+          "definition": "groet",
+          "translations": [
+            {
+              "text": "hallo"
+            }
+          ]
+        }
+      ],
+      "url": "/v2/dictionaries/entries/cqAFqf4aax"
+    },
+    {
+      "datasets": [
+        "laad3",
+        "dictionary"
+      ],
+      "headword": "hello",
+      "id": "cs1scBrH8T",
+      "part_of_speech": "interjection",
+      "senses": [
+        {
+          "definition": "used when meeting or greeting someone",
+          "examples": [
+            {
+              "text": "Hello! How are you doing?"
+            }
+          ]
+        }
+      ],
+      "url": "/v2/dictionaries/entries/cs1scBrH8T"
+    },
+    {
+      "datasets": [
+        "ldec",
+        "dictionary"
+      ],
+      "headword": "Hello!",
+      "id": "cqAJCbmpxG",
+      "senses": [
+        {
+          "translation": "《哈囉！》〔英國娛樂新聞雜誌〕"
+        }
+      ],
+      "url": "/v2/dictionaries/entries/cqAJCbmpxG"
+    },
+    {
+      "datasets": [
+        "ldoce5",
+        "dictionary"
+      ],
+      "headword": "Hello!",
+      "id": "cqAFMKPZwA",
+      "senses": [
+        {
+          "definition": [
+            "a British magazine with pictures and articles about famous people, such as film actors, fashion models, and members of the aristocracy. It typically describes how happy these people are and shows what beautiful houses they live in."
+          ]
+        }
+      ],
+      "url": "/v2/dictionaries/entries/cqAFMKPZwA"
+    },
+    {
+      "datasets": [
+        "lasde",
+        "dictionary"
+      ],
+      "headword": "hello",
+      "id": "cvfdkadTbF",
+      "pronunciations": [
+        {
+          "ipa": "həˈləʊ, he-"
+        },
+        {
+          "ipa": "-ˈloʊ",
+          "lang": "American English"
+        }
+      ],
+      "senses": [
+        {
+          "definition": [
+            "used as a greeting when you meet someone or start speaking on the telephone"
+          ],
+          "examples": [
+            {
+              "text": "Hello, how are you?"
+            }
+          ],
+          "register_label": "spoken"
+        }
+      ],
+      "url": "/v2/dictionaries/entries/cvfdkadTbF"
+    },
+    {
+      "datasets": [
+        "wordwise",
+        "dictionary"
+      ],
+      "headword": "hello",
+      "id": "cqARP0vBqQ",
+      "senses": [
+        {
+          "definition": "used when you meet someone or start talking to them on the telephone",
+          "examples": [
+            {
+              "text": "Hello, can I help you?"
+            }
+          ]
+        }
+      ],
+      "url": "/v2/dictionaries/entries/cqARP0vBqQ"
+    },
+    {
+      "datasets": [
+        "ldec",
+        "dictionary"
+      ],
+      "headword": "hello",
+      "id": "cqAJCbhg2v",
+      "part_of_speech": "interj",
+      "senses": [
+        {
+          "translation": "〔問候語〕喂，哈囉，你好"
+        }
+      ],
+      "url": "/v2/dictionaries/entries/cqAJCbhg2v"
+    },
+    {
+      "datasets": [
+        "laes",
+        "dictionary"
+      ],
+      "headword": "hello",
+      "id": "csTMcdEpnR",
+      "part_of_speech": "interjection",
+      "pronunciations": [
+        {
+          "ipa": "həˈloʊ, hɛˈloʊ, ˈhɛloʊ"
+        }
+      ],
+      "senses": [
+        {
+          "definition": [
+            "used when meeting or greeting someone"
+          ],
+          "lexical_box": [
+            {
+              "lexical_unit": "say hello to sb",
+              "senses": [
+                {
+                  "examples": [
+                    {
+                      "text": "I just want to say hello to a few people.",
+                      "translation": {
+                        "text": [
+                          "Sólo quería saludar a algunas personas."
+                        ]
+                      }
+                    }
+                  ],
+                  "translations": [
+                    {
+                      "text": [
+                        "saludar a alguien"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "translations": [
+            {
+              "example": [
+                {
+                  "text": "Hello, John! How are you?",
+                  "translation": {
+                    "text": [
+                      "¡Hola, John! ¿Qué tal?"
+                    ]
+                  }
+                }
+              ],
+              "text": [
+                "hola"
+              ]
+            }
+          ]
+        }
+      ],
+      "url": "/v2/dictionaries/entries/csTMcdEpnR"
+    },
+    {
+      "datasets": [
+        "brep",
+        "dictionary"
+      ],
+      "headword": "hello",
+      "id": "ct59xK1Ask",
+      "part_of_speech": "interjection",
+      "pronunciations": [
+        {
+          "ipa": "həˈloʊ",
+          "lang": "American English"
+        }
+      ],
+      "senses": [
+        {
+          "definition": [
+            "when meeting or greeting sb"
+          ],
+          "lexical_box": [
+            {
+              "lexical_unit": "to say hello to sb"
+            }
+          ],
+          "translations": [
+            {
+              "example": [
+                {
+                  "text": "Hello, how are you?",
+                  "translation": {
+                    "text": [
+                      "Olá, como vai?"
+                    ]
+                  }
+                }
+              ],
+              "text": [
+                "olá"
+              ]
+            }
+          ]
+        }
+      ],
+      "url": "/v2/dictionaries/entries/ct59xK1Ask"
+    },
+    {
+      "datasets": [
+        "ldoce5",
+        "dictionary"
+      ],
+      "headword": "hello",
+      "id": "cqAFMKKWVF",
+      "part_of_speech": "noun",
+      "pronunciations": [
+        {
+          "audio": [
+            {
+              "lang": "British English",
+              "type": "pronunciation",
+              "url": "/v2/dictionaries/assets/ldoce/gb_pron/hello0205.mp3"
+            }
+          ],
+          "ipa": "həˈləʊ, he-"
+        },
+        {
+          "audio": [
+            {
+              "lang": "American English",
+              "type": "pronunciation",
+              "url": "/v2/dictionaries/assets/ldoce/us_pron/hello.mp3"
+            }
+          ],
+          "ipa": "-ˈloʊ",
+          "lang": "American English"
+        }
+      ],
+      "senses": [
+        {
+          "definition": [
+            "used as a greeting when you see or meet someone"
+          ],
+          "examples": [
+            {
+              "audio": [
+                {
+                  "type": "example",
+                  "url": "/v2/dictionaries/assets/ldoce/exa_pron/p008-001354151.mp3"
+                }
+              ],
+              "text": "Hello, John! How are you?"
+            }
+          ],
+          "function_to_normal_box": {
+            "explanations": [
+              {
+                "examples": [
+                  {
+                    "text": "“Hi, Karen.” “Hi, Richard. How are things with you?”"
+                  }
+                ],
+                "text": "In everyday English, in informal situations, people often say hi rather than hello:"
+              }
+            ]
+          }
+        }
+      ],
+      "url": "/v2/dictionaries/entries/cqAFMKKWVF"
+    }
+  ]
+}

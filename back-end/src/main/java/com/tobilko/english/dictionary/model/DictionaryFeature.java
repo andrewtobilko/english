@@ -1,4 +1,4 @@
-package com.tobilko.english.account.dictionary.model;
+package com.tobilko.english.dictionary.model;
 
 /**
  * Created by Andrew Tobilko on 8/28/17.
