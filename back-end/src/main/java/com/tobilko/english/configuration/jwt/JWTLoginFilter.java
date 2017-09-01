@@ -1,13 +1,12 @@
 package com.tobilko.english.configuration.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tobilko.english.account.model.information.AuthorisationAccountInformation;
+import com.tobilko.english.account.model.information.model.AuthorisationAccountInformation;
 import com.tobilko.english.configuration.TokenAuthenticationService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 

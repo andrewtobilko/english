@@ -1,4 +1,4 @@
-package com.tobilko.english.account.model.information;
+package com.tobilko.english.account.model.information.model;
 
 import lombok.Data;
 

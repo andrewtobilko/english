@@ -1,8 +1,8 @@
 package com.tobilko.english.account.model;
 
 import com.tobilko.english.account.model.configuration.AccountConfiguration;
-import com.tobilko.english.account.model.information.AuthorisationAccountInformation;
-import com.tobilko.english.account.model.information.GeneralAccountInformation;
+import com.tobilko.english.account.model.information.model.AuthorisationAccountInformation;
+import com.tobilko.english.account.model.information.model.GeneralAccountInformation;
 import lombok.Data;
 
 import javax.persistence.*;

@@ -1,6 +1,7 @@
 package com.tobilko.english.configuration;
 
-import com.tobilko.english.account.model.information.AuthorisationAccountInformation;
+import com.tobilko.english.account.model.information.model.AuthorisationAccountInformation;
+import com.tobilko.english.account.model.information.persistence.AccountInformationRepository;
 import com.tobilko.english.account.persistence.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
@@ -19,12 +20,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountDetailsService implements UserDetailsService {
 
-    private final AccountRepository accountRepository;
+    private final AccountInformationRepository accountInformationRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<AuthorisationAccountInformation> optionalInformation = accountRepository.findAuthorisationInformationByEmail(email);
-
+        Optional<AuthorisationAccountInformation> optionalInformation = accountInformationRepository.findAuthorisationInformationByEmail(email);
 
         return turnAuthorisationAccountInformationIntoUserDetails(optionalInformation.orElseThrow(() -> new UsernameNotFoundException("Account has not been found! " + email)));
     }
