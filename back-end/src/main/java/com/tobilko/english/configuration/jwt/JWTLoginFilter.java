@@ -3,7 +3,6 @@ package com.tobilko.english.configuration.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobilko.english.account.model.information.model.AuthorisationAccountInformation;
 import com.tobilko.english.configuration.TokenAuthenticationService;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -22,9 +21,8 @@ import java.util.Collections;
  */
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
-    public JWTLoginFilter(String mappingURL, AuthenticationManager authenticationManager) {
+    public JWTLoginFilter(String mappingURL) {
         super(new AntPathRequestMatcher(mappingURL));
-        setAuthenticationManager(authenticationManager);
     }
 
     @Override
