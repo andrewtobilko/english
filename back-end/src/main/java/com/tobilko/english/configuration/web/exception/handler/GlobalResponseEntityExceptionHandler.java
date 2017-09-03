@@ -1,4 +1,4 @@
-package com.tobilko.english.configuration.web;
+package com.tobilko.english.configuration.web.exception.handler;
 
 import com.tobilko.english.configuration.web.exception.model.ExceptionResponse;
 import org.springframework.http.HttpStatus;

@@ -17,6 +17,7 @@ import java.util.Date;
  */
 public class TokenAuthenticationService {
 
+    // TODO: 9/3/17 move to the prop file
     private static final long EXPIRATION_TIME = 864_000_000;
     private static final String SECRET_KEY = "ThisIsASecret";
     private static final String BEARER_TOKEN_PREFIX = "Bearer";

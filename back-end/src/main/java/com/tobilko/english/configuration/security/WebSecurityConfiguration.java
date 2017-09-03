@@ -44,7 +44,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
             @SneakyThrows
             private UnaryOperator<HttpSecurity> getFilterPositionAwareForConfiguredJWTLoginFilter() {
-                AbstractAuthenticationProcessingFilter filter = new JWTLoginFilter("/login");
+                AbstractAuthenticationProcessingFilter filter = new JWTLoginFilter("/api/accounts/authorise");
                 filter.setAuthenticationManager(authenticationManager());
 
                 return security -> security.addFilterBefore(
@@ -71,11 +71,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             security.csrf().disable();
         }
 
-    // TODO: 9/2/17 rewrite deliberately
+        // TODO: 9/2/17 rewrite deliberately
         private void configureURLAuthorisationByCurrentSecurityInstance(HttpSecurity security) throws Exception {
             security.authorizeRequests()
                     .antMatchers("/").permitAll()
-                    .antMatchers(HttpMethod.POST, "/login").permitAll()
+                    .antMatchers(HttpMethod.POST, "/api/accounts/authorise").permitAll()
                     .antMatchers(HttpMethod.POST, "/api/accounts").permitAll()
                     .anyRequest().authenticated();
         }
