@@ -8,13 +8,14 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * Created by Andrew Tobilko on 8/27/17.
  */
 @Data
 @Entity
-public class Account {
+public class Account implements Serializable {
 
     @Id
     @GeneratedValue
