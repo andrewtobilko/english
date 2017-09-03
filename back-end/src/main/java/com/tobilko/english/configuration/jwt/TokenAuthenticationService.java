@@ -1,4 +1,4 @@
-package com.tobilko.english.configuration;
+package com.tobilko.english.configuration.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;

@@ -6,6 +6,8 @@ import com.tobilko.english.account.model.information.model.GeneralAccountInforma
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Andrew Tobilko on 8/27/17.
@@ -18,9 +20,13 @@ public class Account {
     @GeneratedValue
     private Long id;
 
+    @Valid
+    @NotNull
     @Embedded
     private AuthorisationAccountInformation authorisationInformation;
 
+    @Valid
+    @NotNull
     @Embedded
     private GeneralAccountInformation generalInformation;
 

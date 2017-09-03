@@ -1,7 +1,8 @@
-package com.tobilko.english.configuration;
+package com.tobilko.english.configuration.security;
 
-import com.tobilko.english.configuration.jwt.JWTAuthenticationFilter;
-import com.tobilko.english.configuration.jwt.JWTLoginFilter;
+import com.tobilko.english.configuration.jwt.AccountDetailsService;
+import com.tobilko.english.configuration.jwt.filter.JWTAuthenticationFilter;
+import com.tobilko.english.configuration.jwt.filter.JWTLoginFilter;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,8 +14,7 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.UnaryOperator;
 
 /**
@@ -71,12 +71,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             security.csrf().disable();
         }
 
-    // TODO: 9/2/17
+    // TODO: 9/2/17 rewrite deliberately
         private void configureURLAuthorisationByCurrentSecurityInstance(HttpSecurity security) throws Exception {
             security.authorizeRequests()
                     .antMatchers("/").permitAll()
                     .antMatchers(HttpMethod.POST, "/login").permitAll()
-                    .antMatchers(HttpMethod.GET, "/api/accounts").permitAll()
+                    .antMatchers(HttpMethod.POST, "/api/accounts").permitAll()
                     .anyRequest().authenticated();
         }
 

@@ -1,4 +1,4 @@
-package com.tobilko.english.configuration;
+package com.tobilko.english.configuration.jwt;
 
 import com.tobilko.english.account.model.information.model.AuthorisationAccountInformation;
 import com.tobilko.english.account.model.information.persistence.AccountInformationRepository;
