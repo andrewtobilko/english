@@ -1,7 +1,7 @@
 package com.tobilko.english.configuration.web.resolver.account;
 
+import com.tobilko.english.account.model.Account;
 import com.tobilko.english.account.persistence.AccountRepository;
-import com.tobilko.english.util.AnnotationUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.Authentication;
@@ -12,6 +12,10 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
+
+import java.util.Objects;
+
+import static com.tobilko.english.util.AnnotationUtils.findMethodAnnotation;
 
 /**
  * Created by Andrew Tobilko on 9/3/17.
@@ -24,7 +28,8 @@ public class CurrentAccountHandlerMethodArgumentResolver implements HandlerMetho
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return AnnotationUtils.findMethodAnnotation(CurrentAccount.class, parameter).isPresent();
+        return findMethodAnnotation(CurrentAccount.class, parameter).isPresent() &&
+                Objects.equals(Account.class, parameter.getClass());
     }
 
     @Override
@@ -36,7 +41,7 @@ public class CurrentAccountHandlerMethodArgumentResolver implements HandlerMetho
     ) throws Exception {
         Authentication authentication = fetchCurrentAuthentication();
 
-        if (authentication == null || !AnnotationUtils.findMethodAnnotation(CurrentAccount.class, parameter).isPresent()) {
+        if (authentication == null || !findMethodAnnotation(CurrentAccount.class, parameter).isPresent()) {
             return null;
         }
 

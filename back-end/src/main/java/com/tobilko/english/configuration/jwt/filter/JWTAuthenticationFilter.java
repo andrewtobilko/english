@@ -15,8 +15,7 @@ import java.io.IOException;
 /**
  * Created by Andrew Tobilko on 8/28/17.
  */
-public class
-JWTAuthenticationFilter extends GenericFilterBean {
+public class JWTAuthenticationFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(
@@ -26,9 +25,21 @@ JWTAuthenticationFilter extends GenericFilterBean {
     ) throws IOException, ServletException {
         Authentication authentication = TokenAuthenticationService.getAuthentication((HttpServletRequest) request);
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
+        AuthenticationContextChanger.setAuthenticationToContext(authentication);
         filterChain.doFilter(request, response);
+        AuthenticationContextChanger.removeCurrentAuthenticationFromContext();
+    }
+
+    private static class AuthenticationContextChanger {
+
+        private static void setAuthenticationToContext(Authentication authentication) {
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        }
+
+        private static void removeCurrentAuthenticationFromContext() {
+            SecurityContextHolder.getContext().setAuthentication(null);
+        }
+
     }
 
 }
