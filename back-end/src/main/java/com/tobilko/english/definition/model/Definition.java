@@ -18,4 +18,6 @@ public class Definition implements Serializable {
     @GeneratedValue(strategy = SEQUENCE)
     private Long id;
 
+    private String query;
+
 }
