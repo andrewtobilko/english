@@ -4,10 +4,8 @@ import com.tobilko.english.account.model.Account;
 import com.tobilko.english.account.persistence.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -16,7 +14,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import java.util.Objects;
 
-import static com.tobilko.english.util.AnnotationUtils.findMethodAnnotation;
+import static com.tobilko.english.configuration.util.AnnotationUtil.findMethodAnnotation;
 
 /**
  * Created by Andrew Tobilko on 9/3/17.

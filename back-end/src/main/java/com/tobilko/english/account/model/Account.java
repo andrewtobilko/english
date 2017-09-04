@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 /**
  * Created by Andrew Tobilko on 8/27/17.
@@ -23,7 +24,7 @@ public class Account implements Serializable {
 
     @Id
     @JsonIgnore
-    @GeneratedValue
+    @GeneratedValue(strategy = SEQUENCE)
     private Long id;
 
     @Valid

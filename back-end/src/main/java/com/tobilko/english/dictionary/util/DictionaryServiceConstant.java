@@ -5,7 +5,6 @@ package com.tobilko.english.dictionary.util;
  */
 public final class DictionaryServiceConstant {
 
-    public static final String WORD_TO_SEARCH_URL_TEMPLATE = "{word}";
     public static final String DICTIONARY_SERVICE_REPOSITORY_PATH = "dictionaries";
 
 }

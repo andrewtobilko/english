@@ -1,4 +1,4 @@
-package com.tobilko.english.util;
+package com.tobilko.english.configuration.util;
 
 import org.springframework.core.MethodParameter;
 
@@ -11,7 +11,7 @@ import static java.util.Optional.of;
 /**
  * Created by Andrew Tobilko on 9/4/17.
  */
-public final class AnnotationUtils {
+public final class AnnotationUtil {
 
     public static <T extends Annotation> Optional<T> findMethodAnnotation(
             Class<T> annotationClass,
@@ -35,6 +35,6 @@ public final class AnnotationUtils {
         return empty();
     }
 
-    private AnnotationUtils() {}
+    private AnnotationUtil() {}
 
 }

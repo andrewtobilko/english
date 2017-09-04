@@ -6,6 +6,8 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Map;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
 
 /**
  * Created by Andrew Tobilko on 8/28/17.
@@ -16,7 +18,7 @@ import java.util.Map;
 public class AccountPreference {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = SEQUENCE)
     private Long id;
 
     @ManyToMany()
