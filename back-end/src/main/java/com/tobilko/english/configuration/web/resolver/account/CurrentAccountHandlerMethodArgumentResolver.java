@@ -4,6 +4,7 @@ import com.tobilko.english.account.model.Account;
 import com.tobilko.english.account.persistence.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -29,7 +30,7 @@ public class CurrentAccountHandlerMethodArgumentResolver implements HandlerMetho
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return findMethodAnnotation(CurrentAccount.class, parameter).isPresent() &&
-                Objects.equals(Account.class, parameter.getClass());
+                Objects.equals(Account.class, parameter.getParameterType());
     }
 
     @Override
@@ -55,9 +56,7 @@ public class CurrentAccountHandlerMethodArgumentResolver implements HandlerMetho
     }
 
     private String fetchPrincipalUsernameFromFromAuthentication(Authentication authentication) {
-        User principal = (User) authentication.getPrincipal();
-
-        return principal.getUsername();
+        return authentication.getPrincipal().toString();
     }
 
 }

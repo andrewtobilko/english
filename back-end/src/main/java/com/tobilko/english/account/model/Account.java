@@ -1,5 +1,8 @@
 package com.tobilko.english.account.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tobilko.english.account.model.configuration.AccountConfiguration;
 import com.tobilko.english.account.model.information.model.AuthorisationAccountInformation;
 import com.tobilko.english.account.model.information.model.GeneralAccountInformation;
@@ -10,6 +13,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.*;
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
+
 /**
  * Created by Andrew Tobilko on 8/27/17.
  */
@@ -18,19 +24,23 @@ import java.io.Serializable;
 public class Account implements Serializable {
 
     @Id
+    @JsonIgnore
     @GeneratedValue
     private Long id;
 
     @Valid
     @NotNull
     @Embedded
+    @JsonInclude(NON_NULL)
     private AuthorisationAccountInformation authorisationInformation;
 
     @Valid
     @NotNull
     @Embedded
+    @JsonInclude(NON_NULL)
     private GeneralAccountInformation generalInformation;
 
+    @JsonInclude(NON_NULL)
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private AccountConfiguration configuration;
 
