@@ -17,5 +17,5 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true

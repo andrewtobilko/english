@@ -2,8 +2,7 @@ package com.tobilko.english.account.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tobilko.english.account.model.configuration.AccountConfiguration;
+import com.tobilko.english.account.model.configuration.AccountPreference;
 import com.tobilko.english.account.model.information.model.AuthorisationAccountInformation;
 import com.tobilko.english.account.model.information.model.GeneralAccountInformation;
 import lombok.Data;
@@ -13,7 +12,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.*;
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
 
 /**
@@ -42,6 +40,6 @@ public class Account implements Serializable {
 
     @JsonInclude(NON_NULL)
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private AccountConfiguration configuration;
+    private AccountPreference configuration;
 
 }
