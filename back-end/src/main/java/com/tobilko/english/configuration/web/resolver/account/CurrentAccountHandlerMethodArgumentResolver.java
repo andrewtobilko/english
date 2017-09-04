@@ -1,10 +1,9 @@
 package com.tobilko.english.configuration.web.resolver.account;
 
-import com.tobilko.english.account.model.Account;
 import com.tobilko.english.account.persistence.AccountRepository;
+import com.tobilko.english.util.AnnotationUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -17,7 +16,6 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 /**
  * Created by Andrew Tobilko on 9/3/17.
  */
-// TODO: 9/3/17 rewrite entirely
 @Component
 @RequiredArgsConstructor
 public class CurrentAccountHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
@@ -36,30 +34,26 @@ public class CurrentAccountHandlerMethodArgumentResolver implements HandlerMetho
             NativeWebRequest request,
             WebDataBinderFactory factory
     ) throws Exception {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication = fetchCurrentAuthentication();
+
         if (authentication == null || !AnnotationUtils.findMethodAnnotation(CurrentAccount.class, parameter).isPresent()) {
             return null;
         }
-        User principal = (User) authentication.getPrincipal();
 
-        CurrentAccount annotation = AnnotationUtils.findMethodAnnotation(CurrentAccount.class, parameter).get();
-        boolean shouldExceptionBeThrown = annotation.throwExceptionIfNotFound();
-
-        String name = principal.getUsername();
-
-        if (name == null) {
-            return null;
-        }
-
-        Account account;
-        if (shouldExceptionBeThrown) {
-            account = utils.findAccountByEmailOrElseThrowAccountNotFoundException(name);
-        } else {
-            account = utils.findAccountByEmail(name).orElse(null);
-        }
-
-        return account;
+        return repository
+                .findOneByAuthorisationInformationEmail(fetchPrincipalUsernameFromFromAuthentication(authentication))
+                .orElse(null);
     }
 
+    private Authentication fetchCurrentAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
+    }
+
+    private String fetchPrincipalUsernameFromFromAuthentication(Authentication authentication) {
+        User principal = (User) authentication.getPrincipal();
+
+        return principal.getUsername();
+    }
 
 }
+
