@@ -6,13 +6,14 @@ import com.tobilko.english.account.model.configuration.AccountPreference;
 import com.tobilko.english.account.model.information.model.AuthorisationAccountInformation;
 import com.tobilko.english.account.model.information.model.GeneralAccountInformation;
 import lombok.Data;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 /**
@@ -20,9 +21,11 @@ import static javax.persistence.GenerationType.SEQUENCE;
  */
 @Data
 @Entity
+@RedisHash(value = "accounts")
 public class Account implements Serializable {
 
     @Id
+    //@org.springframework.data.annotation.Id
     @JsonIgnore
     @GeneratedValue(strategy = SEQUENCE)
     private Long id;

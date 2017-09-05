@@ -31,7 +31,9 @@ dependencies {
             'org.springframework.boot:spring-boot-starter-web',
             'org.springframework.boot:spring-boot-starter-webflux',
             'org.springframework.boot:spring-boot-starter-websocket',
+
             'org.springframework.boot:spring-boot-starter-data-redis',
+            'io.lettuce:lettuce-core:5.0.0.RC1',
 
             'io.jsonwebtoken:jjwt:0.7.0',
             'mysql:mysql-connector-java:6.0.3'

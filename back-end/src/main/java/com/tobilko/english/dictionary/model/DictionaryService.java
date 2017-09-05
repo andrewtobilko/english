@@ -2,6 +2,7 @@ package com.tobilko.english.dictionary.model;
 
 import com.tobilko.english.dictionary.model.configuration.DictionaryServiceConfiguration;
 import lombok.Data;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
 import java.net.URL;
@@ -13,6 +14,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
  */
 @Data
 @Entity
+@RedisHash(value = "dictionaries")
 public class DictionaryService {
 
     @Id
