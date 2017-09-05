@@ -24,13 +24,21 @@ public class DefinitionLookupController {
     @GetMapping("/api/definitions")
     private Definition lookDefinitionOverPreferableDictionaryServices(
             @RequestParam("query") String definition,
-            @CurrentAccount Account account // how todo = null = current account
+            @CurrentAccount Account account
     ) {
-        // TODO: 9/5/17 should the definition be validated ?
+        validateDefinitionQuery(definition);
+
         return service.lookDefinitionOverPreferableDictionaryServices(
                 definition,
                 getPreferenceByAccount(account).orElseThrow(() -> new IllegalArgumentException("acc prefs should be set")) // todo
         );
+    }
+
+    private void validateDefinitionQuery(String query) {
+        // TODO: 9/6/17 cover up all cases
+        if (query.isEmpty()) {
+            throw new IllegalArgumentException("consider passing a good query");
+        }
     }
 
     private Optional<AccountPreference> getPreferenceByAccount(Account account) {

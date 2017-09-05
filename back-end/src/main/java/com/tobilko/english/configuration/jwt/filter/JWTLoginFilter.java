@@ -21,8 +21,11 @@ import java.util.Collections;
  */
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
+    private final ObjectMapper objectMapper;
+
     public JWTLoginFilter(String mappingURL) {
         super(new AntPathRequestMatcher(mappingURL));
+        objectMapper = new ObjectMapper();
     }
 
     @Override
@@ -31,15 +34,20 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
             HttpServletResponse response
     ) throws AuthenticationException, IOException, ServletException {
 
-        AuthorisationAccountInformation information = new ObjectMapper()
-                .readValue(request.getInputStream(), AuthorisationAccountInformation.class);
+        final AuthorisationAccountInformation information = objectMapper.readValue(
+                request.getInputStream(),
+                AuthorisationAccountInformation.class
+        );
 
-        return getAuthenticationManager().authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        information.getEmail(),
-                        information.getPassword(),
-                        Collections.emptyList()
-                )
+        return getAuthenticationManager()
+                .authenticate(obtainTokenFromAuthorisationInformation(information));
+    }
+
+    private UsernamePasswordAuthenticationToken obtainTokenFromAuthorisationInformation(AuthorisationAccountInformation information) {
+        return new UsernamePasswordAuthenticationToken(
+                information.getEmail(),
+                information.getPassword(),
+                Collections.emptyList()
         );
     }
 

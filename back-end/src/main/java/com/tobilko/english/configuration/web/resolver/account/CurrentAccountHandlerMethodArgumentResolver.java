@@ -14,8 +14,6 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import java.util.Objects;
 
-import static com.tobilko.english.configuration.util.AnnotationUtil.findMethodAnnotation;
-
 /**
  * Created by Andrew Tobilko on 9/3/17.
  */
@@ -27,8 +25,8 @@ public class CurrentAccountHandlerMethodArgumentResolver implements HandlerMetho
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return findMethodAnnotation(CurrentAccount.class, parameter).isPresent() &&
-                Objects.equals(Account.class, parameter.getParameterType());
+        return Objects.equals(Account.class, parameter.getParameterType()) &&
+                parameter.hasParameterAnnotation(CurrentAccount.class);
     }
 
     @Override
@@ -40,13 +38,13 @@ public class CurrentAccountHandlerMethodArgumentResolver implements HandlerMetho
     ) throws Exception {
         Authentication authentication = fetchCurrentAuthentication();
 
-        if (authentication == null || !findMethodAnnotation(CurrentAccount.class, parameter).isPresent()) {
-            return null;
+        if (authentication == null) {
+            throw new IllegalArgumentException("this request doesn't have a bearer token"); // TODO: 9/6/17
         }
 
         return repository
                 .findOneByAuthorisationInformationEmail(fetchPrincipalUsernameFromFromAuthentication(authentication))
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException("auth is wrong; validate token again")); // // TODO: 9/6/17
     }
 
     private Authentication fetchCurrentAuthentication() {

@@ -10,12 +10,8 @@ import java.util.Optional;
 /**
  * Created by Andrew Tobilko on 8/28/17.
  */
-@RepositoryRestResource(exported = false)
+// TODO: 9/6/17 exported=false except for POST for registration
 public interface AccountRepository extends PagingAndSortingRepository<Account, Long> {
-
-    @Override
-    @RestResource
-    <S extends Account> S save(S account);
 
     Optional<Account> findOneByAuthorisationInformationEmail(String email);
 
