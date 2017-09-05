@@ -29,8 +29,8 @@ public class AccountDetailsService implements UserDetailsService {
         return turnAuthorisationAccountInformationIntoUserDetails(optionalInformation.orElseThrow(() -> new UsernameNotFoundException("Account has not been found! " + email)));
     }
 
-    private UserDetails turnAuthorisationAccountInformationIntoUserDetails(AuthorisationAccountInformation information) {
-        return new User(information.getEmail(), information.getPassword(), Collections.emptyList());
-    }
+        private UserDetails turnAuthorisationAccountInformationIntoUserDetails(AuthorisationAccountInformation information) {
+            return new User(information.getEmail(), information.getPassword(), Collections.emptyList());
+        }
 
 }

@@ -15,6 +15,7 @@ import java.util.Date;
 /**
  * Created by Andrew Tobilko on 8/28/17.
  */
+// TODO: 9/6/17 consider making that class static-agnostic
 public class TokenAuthenticationService {
 
     // TODO: 9/3/17 move to the prop file
@@ -28,19 +29,19 @@ public class TokenAuthenticationService {
         new ObjectMapper().writeValue(response.getWriter(), generateTokenValueBySubject(subject));
     }
 
-    private static String generateTokenValueBySubject(String subject) {
-        return Jwts.builder()
-                .setSubject(subject)
-                .setExpiration(generateExpirationDate())
-                .signWith(SignatureAlgorithm.HS512, getSecretKeyBytes())
-                .compact();
-    }
+        private static String generateTokenValueBySubject(String subject) {
+            return Jwts.builder()
+                    .setSubject(subject)
+                    .setExpiration(generateExpirationDate())
+                    .signWith(SignatureAlgorithm.HS512, getSecretKeyBytes())
+                    .compact();
+        }
 
-    private static Date generateExpirationDate() {
-        return new Date(System.currentTimeMillis() + EXPIRATION_TIME);
-    }
+            private static Date generateExpirationDate() {
+                return new Date(System.currentTimeMillis() + EXPIRATION_TIME);
+            }
 
-    private static byte[] getSecretKeyBytes() {
+            private static byte[] getSecretKeyBytes() {
         return SECRET_KEY.getBytes();
     }
 
@@ -60,13 +61,13 @@ public class TokenAuthenticationService {
         return new UsernamePasswordAuthenticationToken(principal, null, Collections.emptyList());
     }
 
-    private static String parsePrincipalFromTokenValue(String token) {
-        return Jwts
-                .parser()
-                .setSigningKey(getSecretKeyBytes())
-                .parseClaimsJws(token.replace(BEARER_TOKEN_PREFIX, ""))
-                .getBody()
-                .getSubject();
-    }
+        private static String parsePrincipalFromTokenValue(String token) {
+            return Jwts
+                    .parser()
+                    .setSigningKey(getSecretKeyBytes())
+                    .parseClaimsJws(token.replace(BEARER_TOKEN_PREFIX, ""))
+                    .getBody()
+                    .getSubject();
+        }
 
 }

@@ -32,11 +32,11 @@ public class JWTAuthenticationFilter extends GenericFilterBean {
 
     private static class AuthenticationContextChanger {
 
-        private static void setAuthenticationToContext(Authentication authentication) {
+        static void setAuthenticationToContext(Authentication authentication) {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
-        private static void removeCurrentAuthenticationFromContext() {
+        static void removeCurrentAuthenticationFromContext() {
             SecurityContextHolder.getContext().setAuthentication(null);
         }
 

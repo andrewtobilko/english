@@ -43,13 +43,13 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
                 .authenticate(obtainTokenFromAuthorisationInformation(information));
     }
 
-    private UsernamePasswordAuthenticationToken obtainTokenFromAuthorisationInformation(AuthorisationAccountInformation information) {
-        return new UsernamePasswordAuthenticationToken(
-                information.getEmail(),
-                information.getPassword(),
-                Collections.emptyList()
-        );
-    }
+        private UsernamePasswordAuthenticationToken obtainTokenFromAuthorisationInformation(AuthorisationAccountInformation information) {
+            return new UsernamePasswordAuthenticationToken(
+                    information.getEmail(),
+                    information.getPassword(),
+                    Collections.emptyList()
+            );
+        }
 
     @Override
     protected void successfulAuthentication(
