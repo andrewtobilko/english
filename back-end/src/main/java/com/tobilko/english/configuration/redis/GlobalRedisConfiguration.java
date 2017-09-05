@@ -60,31 +60,3 @@ public class GlobalRedisConfiguration {
     }
 
 }
-
-@Repository
-class AccountRepositoryImpl {
-
-    private static final String KEY = "Account";
-
-    private RedisTemplate<String, Account> template;
-    private HashOperations hashOps;
-
-    @Autowired
-    public AccountRepositoryImpl(RedisTemplate redisTemplate) {
-        this.template = redisTemplate;
-    }
-
-    @PostConstruct
-    private void init() {
-        hashOps = template.opsForHash();
-    }
-
-    public void save(Account account) {
-        hashOps.put(KEY, account.getId(), account);
-    }
-
-    public Account find(Long id) {
-        return (Account) hashOps.get(KEY, id);
-    }
-
-}
