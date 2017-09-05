@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class GlobalRedisMessageListener {
 
     public void receiveMessageFromRedis(String message) {
-        System.out.println("redis message > " + message);
+        // todo
     }
 
 }
